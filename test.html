@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <table border="1" >
+            <tr>
+                <td id="td" >
+                    
+                </td>
+            </tr>
+        </table>
+        <button onclick="x()" >click</button>
+        <script>
+            let td = document.getElementById("td")
+            
+            
+            
+            let img = document.createElement("img")
+            img.style.height = "160.33px"
+            img.style.width = "160.33px"
+            img.value = "o"
+            img.src = "./o.png"
+           
+            console.log(img.value);
+           
+           td.appendChild(img)
+           console.log(td.lastChild.value);
+            if (td.lastChild.value === img.value){
+                console.log("wqual");
+
+
+
+                
+            }
+        </script>
+    </body>
+</html>

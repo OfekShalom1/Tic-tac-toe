@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="TICTAC.css" >
+       
+        
+    </head>
+    <body id="body">
+        <h1>Tic Tac Toe - Project: Ofek Shalom</h1>
+        <h1>O- Start first</h1>
+         <table border="1" id="table" style="height: 500px;width: 500px; background-color:rgb(160, 181, 214);">  <!--Table for 9x9 for the tic tav toe -->
+            <tr>
+
+                <td onclick="x_o(id)" id="td1" style="height: 163.33px;width: 163.33px;"> <!--every table data need to be same size, that the game look normal. -->
+                </td>
+                <td onclick="x_o(id)" id="td2"style="height: 163.33px; width: 163.33px;">
+
+                </td>
+                <td onclick="x_o(id)" id="td3" style="height: 163.33px; width: 163.33px;">
+
+                </td>
+            </tr>
+            <tr>
+                <td onclick="x_o(id)" id="td4" style="height: 163.33px;width: 163.33px;">
+
+                </td>
+                <td onclick="x_o(id)" id="td5" style="height: 163.33px;width: 163.33px;" >
+                 </td>
+                <td onclick="x_o(id)" id="td6" style="height: 163.33px;width: 163.33px;">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td onclick="x_o(id)" id="td7" style="height: 163.33px;width: 163.33px;">
+
+                </td>
+                <td onclick="x_o(id)" id="td8" style="height: 163.33px;width: 163.33px;">
+
+                </td>
+                <td onclick="x_o(id)" id="td9" style="height: 163.33px;width: 163.33px;">
+                    
+                </td>
+            </tr>
+ 
+        </table>
+
+        <button onclick="remov()" >Play again</button>
+
+
+
+        <script>
+            let counter=0 
+            let counter2 = 0
+            let counter3 = 0
+            function x_o(id){
+                let table = document.getElementById("table")
+                let td1 = document.getElementById("td1")// Set variable for each table data for my condtions to win in the end of the function.
+                let td2 = document.getElementById("td2")
+                let td3 = document.getElementById("td3")
+                let td4 = document.getElementById("td4")
+                let td5 = document.getElementById("td5")
+                let td6 = document.getElementById("td6")
+                let td7 = document.getElementById("td7")
+                let td8 = document.getElementById("td8")
+                let td9 = document.getElementById("td9")
+                let td = document.getElementById(id) // Set varible for all tables data in the table.
+                let h2 = document.createElement("h2")
+                let body = document.getElementById("body")
+                
+                
+                let alltd = [td1,td2,td3,td4,td5,td6,td7,td8,td9] // varible of array that contains every td.
+                
+                
+                
+                
+                if (counter ===2){ // To make sure that counter is only 1 & 0 for my condition later.
+                    counter = 0
+                }
+
+
+                let o = document.createElement("img") // Set image settings for O.
+                    o.style.height = "156.33px"
+                    o.style.width = "156.33px"
+                    o.src = "./o.png"
+                    o.value = "o"
+                    
+                let x = document.createElement("img") //Set image settings for X.
+                    x.style.height = "156.33px"
+                    x.style.width = "156.33px"
+                    x.src = "./x.png"
+                    x.value = "x"
+                    
+                console.log(td1.children.length);
+                
+                if (counter === 0 && ((td.children.length < 1)) ){ // Check counter to know when to add X and O.
+                     td.appendChild(o) 
+
+                     counter++                     
+                                                             // (td.children.length < 1) To check that is only one img in each td.
+                
+                 }else if(counter === 1&& (td.children.length < 1) ){ // If counter equals to 0 so its O image, If it equals to 1 its X image.
+                     td.appendChild(x)
+                             counter++
+                } 
+                
+                    let td123 = td1.lastChild.value == o.value && td2.lastChild.value == o.value && td3.lastChild.value == o.value // Horizontal sequence of O
+                    let td456 = td4.lastChild.value == o.value && td5.lastChild.value == o.value && td6.lastChild.value == o.value
+                    let td789 = td7.lastChild.value == o.value && td8.lastChild.value == o.value && td9.lastChild.value == o.value
+                    let td147 = td1.lastChild.value == o.value && td4.lastChild.value == o.value && td7.lastChild.value == o.value // Vertical sequence of O
+                    let td258 = td2.lastChild.value == o.value && td5.lastChild.value == o.value && td8.lastChild.value == o.value 
+                    let td369 = td3.lastChild.value == o.value && td6.lastChild.value == o.value && td9.lastChild.value == o.value 
+                    let td159= td1.lastChild.value == o.value && td5.lastChild.value == o.value && td9.lastChild.value == o.value // Slant sequences of O
+                    let td357= td3.lastChild.value == o.value && td5.lastChild.value == o.value && td7.lastChild.value == o.value 
+                    // All O options to win.
+                    
+                    
+                    let td123x = td1.lastChild.value == x.value && td2.lastChild.value == x.value && td3.lastChild.value == x.value //Horizontal sequences of X
+                    let td456x = td4.lastChild.value == x.value && td5.lastChild.value == x.value && td6.lastChild.value == x.value
+                    let td789x = td7.lastChild.value == x.value && td8.lastChild.value == x.value && td9.lastChild.value == x.value
+                    let td147x = td1.lastChild.value == x.value && td4.lastChild.value == x.value && td7.lastChild.value == x.value // Vertical sequences of X
+                    let td258x= td2.lastChild.value == x.value && td5.lastChild.value == x.value && td8.lastChild.value == x.value 
+                    let td369x = td3.lastChild.value == x.value && td6.lastChild.value == x.value && td9.lastChild.value == x.value 
+                    let td159x= td1.lastChild.value == x.value && td5.lastChild.value == x.value && td9.lastChild.value == x.value // Slant sequences of X
+                    let td357x= td3.lastChild.value == x.value && td5.lastChild.value ==x.value && td7.lastChild.value == x.value 
+                    // All X options to win.
+                    
+                    
+                    let o_options_winning = td123 || td456 || td789 || td147 || td258 || td369 || td159 || td357 // All o options winning. set variable for all conditions to win.
+                    let x_options_winning = td123x || td456x || td789x || td147x || td258x || td369x || td159x || td357x // All x options winning. set variable for all conditions to win.
+
+                    if (o_options_winning && counter2 <1){ //counter2 check if already X or O won.
+                    h2.innerText = "O-Win!"                // if they won I add 1 to counter and then the condition dont work.
+                    body.appendChild(h2)
+                    counter2++
+                    for (let i = 0; i < alltd.length; i++) { // cant press after O win.
+                        alltd[i].onclick = 0 
+                        
+                    }
+                    // let button = document.createElement("button")
+                    // button.innerHTML = "play again"
+                    // button.onclick = x_o().remove()
+                    // body.appendChild(button)
+                }else if (x_options_winning && counter2 < 1){
+                    h2.innerText = " X- Win!"
+                    body.appendChild(h2)
+                    counter2++
+                    for (let i = 0; i < alltd.length; i++) { // cant press after X win.
+                        alltd[i].onclick = 0 
+                        
+                    }
+                 }
+
+        }
+        const remov = (() =>{
+        window.location.href = "./tic_tac_toe.html"
+        })
+
+
+        </script>
+    </body>
+</html>
